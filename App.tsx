@@ -61,7 +61,7 @@ export function App() {
   }, [])
 
   return (
-    <div className="space-y-6">
+    <>
       <Card>
         <CardHeader>
           <CardTitle>Option Strategy Payoff Chart</CardTitle>
@@ -91,7 +91,7 @@ export function App() {
               <Textarea
                 readOnly
                 value={svgString}
-                className="font-mono text-xs"
+                className="font-mono text-xs max-h-10"
                 rows={3}
                 onFocus={(e) => { e.target.select() }}
               />
@@ -119,6 +119,6 @@ export function App() {
           </Card>
         ))}
       </div>
-    </div>
+    </>
   )
 }
