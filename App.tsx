@@ -1,17 +1,17 @@
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import type { OptionLeg, SvgConfig } from './lib/types'
-import { calculatePayoff } from './lib/payoff'
-import { generateSvg } from './lib/svg-generator'
-import { strategies } from './lib/strategies'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { calculatePayoff } from './lib/payoff'
+import { strategies } from './lib/strategies'
+import { generateSvg } from './lib/svg-generator'
+import type { OptionLeg, SvgConfig } from './lib/types'
 
 const DEFAULT_CONFIG: SvgConfig = {
   width: 1600,
   height: 900,
   atmPrice: 100,
-  priceRange: [70, 130],
-  margins: { top: 60, right: 60, bottom: 60, left: 60 },
+  priceRange: [80, 120],
+  margins: { top: 50, right: 50, bottom: 50, left: 50 },
   yRange: [-8, 8],
 }
 
