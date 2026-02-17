@@ -22,7 +22,7 @@ function generateStrategySvg(legs: OptionLeg[]): string {
 
 export function App() {
   const [jsonInput, setJsonInput] = useState(() =>
-    JSON.stringify(strategies[0].legs, null, 2)
+    JSON.stringify(strategies[0].legs)
   )
   const [debouncedInput, setDebouncedInput] = useState(jsonInput)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -54,7 +54,7 @@ export function App() {
   )
 
   const handleStrategyClick = useCallback((legs: OptionLeg[]) => {
-    const json = JSON.stringify(legs, null, 2)
+    const json = JSON.stringify(legs)
     setJsonInput(json)
     setDebouncedInput(json)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -72,7 +72,7 @@ export function App() {
             onChange={(e) => { setJsonInput(e.target.value) }}
             spellCheck={false}
             className="font-mono text-sm"
-            rows={6}
+            rows={3}
           />
           {error ? <p className="text-destructive text-sm">{error}</p> : null}
           {svgString ? (
@@ -92,7 +92,7 @@ export function App() {
                 readOnly
                 value={svgString}
                 className="font-mono text-xs"
-                rows={8}
+                rows={3}
                 onFocus={(e) => { e.target.select() }}
               />
             </>
@@ -104,7 +104,7 @@ export function App() {
         {strategySvgs.map((s) => (
           <Card
             key={s.name}
-            className="cursor-pointer transition-colors hover:bg-accent"
+            className="cursor-pointer transition-shadow hover:ring-2 hover:ring-ring hover:shadow-md"
             onClick={() => { handleStrategyClick(s.legs) }}
           >
             <CardHeader>
