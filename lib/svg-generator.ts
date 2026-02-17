@@ -1,6 +1,9 @@
 import type { PayoffData, SvgConfig } from './types'
 
+let svgIdCounter = 0
+
 export function generateSvg(data: PayoffData, config: SvgConfig): string {
+  const uid = `s${svgIdCounter++}`
   const { width, height, atmPrice, margins } = config
   const plotW = width - margins.left - margins.right
   const plotH = height - margins.top - margins.bottom
@@ -33,7 +36,7 @@ export function generateSvg(data: PayoffData, config: SvgConfig): string {
   const linePoints = data.points.map((p) => `${scaleX(p.x)},${scaleY(p.y)}`).join(' ')
 
   // Find zero crossings and build fill segments
-  const fills = buildFillPaths(data, scaleX, scaleY, zeroY)
+  const fills = buildFillPaths(data, scaleX, scaleY, zeroY, uid)
 
   // Gradient definitions
   const gradientDefs = buildGradientDefs(fills, zeroY, height)
@@ -50,7 +53,7 @@ export function generateSvg(data: PayoffData, config: SvgConfig): string {
   const transitionPx = 20
   const greenStop = r(((zeroY - transitionPx) / height) * 100)
   const redStop = r(((zeroY + transitionPx) / height) * 100)
-  const lineGradient = `<linearGradient id="payoff-gradient" x1="0" y1="0" x2="0" y2="${height}" gradientUnits="userSpaceOnUse">
+  const lineGradient = `<linearGradient id="${uid}-payoff" x1="0" y1="0" x2="0" y2="${height}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#22c55e"/>
       <stop offset="${greenStop}%" stop-color="#22c55e"/>
       <stop offset="${r((zeroY / height) * 100)}%" stop-color="#eab308"/>
@@ -62,7 +65,7 @@ export function generateSvg(data: PayoffData, config: SvgConfig): string {
   <defs>
     ${gradientDefs}
     ${lineGradient}
-    <clipPath id="plot-clip"><rect x="${margins.left}" y="${margins.top}" width="${plotW}" height="${plotH}"/></clipPath>
+    <clipPath id="${uid}-clip"><rect x="${margins.left}" y="${margins.top}" width="${plotW}" height="${plotH}"/></clipPath>
   </defs>
   <!-- Zero line -->
   <line x1="${margins.left}" y1="${zeroY}" x2="${width - margins.right}" y2="${zeroY}" stroke="CanvasText" stroke-opacity="0.5" stroke-width="18"/>
@@ -70,11 +73,11 @@ export function generateSvg(data: PayoffData, config: SvgConfig): string {
   <line x1="${scaleX(atmPrice)}" y1="${margins.top}" x2="${scaleX(atmPrice)}" y2="${height - margins.bottom}" stroke="CanvasText" stroke-opacity="0.5" stroke-width="14" stroke-dasharray="18 24"/>
   <!-- Strike ticks -->
   ${strikeTicks}
-  <g clip-path="url(#plot-clip)">
+  <g clip-path="url(#${uid}-clip)">
   <!-- Fill regions -->
   ${fills.map((f) => `<path d="${f.path}" fill="url(#${f.id})" />`).join('\n  ')}
   <!-- Payoff line -->
-  <polyline points="${linePoints}" fill="none" stroke="url(#payoff-gradient)" stroke-width="18" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="${linePoints}" fill="none" stroke="url(#${uid}-payoff)" stroke-width="18" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 </svg>`
 }
@@ -92,6 +95,7 @@ function buildFillPaths(
   scaleX: (p: number) => number,
   scaleY: (p: number) => number,
   zeroY: number,
+  uid: string,
 ): FillSegment[] {
   const { points } = data
   if (points.length < 2) return []
@@ -107,7 +111,7 @@ function buildFillPaths(
       return
     }
     const isProfit = segPoints.some((p) => p.sy < zeroY) // above zero line = profit (y is inverted)
-    const id = `fill-${segId++}`
+    const id = `${uid}-f${segId++}`
 
     // Build closed path: line along payoff, then back along zero
     let d = `M${segPoints[0].sx},${segPoints[0].sy}`
