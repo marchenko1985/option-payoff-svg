@@ -242,17 +242,17 @@ export const strategies: Strategy[] = [
   {
     name: 'Bull Put Ladder',
     legs: [
-      { type: 'put', position: -1, strike: 5, expiry: 30 },
-      { type: 'put', position: -1, strike: 0, expiry: 30 },
-      { type: 'put', position: 1, strike: -5, expiry: 30 },
+      { type: 'put', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: 1, strike: 0, expiry: 30 },
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
     ],
   },
   {
     name: 'Bear Put Ladder',
     legs: [
-      { type: 'put', position: 1, strike: 5, expiry: 30 },
-      { type: 'put', position: 1, strike: 0, expiry: 30 },
-      { type: 'put', position: -1, strike: -5, expiry: 30 },
+      { type: 'put', position: -1, strike: 5, expiry: 30 },
+      { type: 'put', position: -1, strike: 0, expiry: 30 },
+      { type: 'put', position: 1, strike: -5, expiry: 30 },
     ],
   },
 
