@@ -222,6 +222,183 @@ export const strategies: Strategy[] = [
     ],
   },
 
+  // === Ladders ===
+  {
+    name: 'Bull Call Ladder',
+    legs: [
+      { type: 'call', position: 1, strike: -5, expiry: 30 },
+      { type: 'call', position: -1, strike: 0, expiry: 30 },
+      { type: 'call', position: -1, strike: 5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Bear Call Ladder',
+    legs: [
+      { type: 'call', position: -1, strike: -5, expiry: 30 },
+      { type: 'call', position: 1, strike: 0, expiry: 30 },
+      { type: 'call', position: 1, strike: 5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Bull Put Ladder',
+    legs: [
+      { type: 'put', position: -1, strike: 5, expiry: 30 },
+      { type: 'put', position: -1, strike: 0, expiry: 30 },
+      { type: 'put', position: 1, strike: -5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Bear Put Ladder',
+    legs: [
+      { type: 'put', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: 1, strike: 0, expiry: 30 },
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+    ],
+  },
+
+  // === Broken Wings ===
+  {
+    name: 'Call Broken Wing',
+    legs: [
+      { type: 'call', position: 1, strike: -5, expiry: 30 },
+      { type: 'call', position: -2, strike: 0, expiry: 30 },
+      { type: 'call', position: 1, strike: 10, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Put Broken Wing',
+    legs: [
+      { type: 'put', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: -2, strike: 0, expiry: 30 },
+      { type: 'put', position: 1, strike: -10, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Inverse Call Broken Wing',
+    legs: [
+      { type: 'call', position: -1, strike: -5, expiry: 30 },
+      { type: 'call', position: 2, strike: 0, expiry: 30 },
+      { type: 'call', position: -1, strike: 10, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Inverse Put Broken Wing',
+    legs: [
+      { type: 'put', position: -1, strike: 5, expiry: 30 },
+      { type: 'put', position: 2, strike: 0, expiry: 30 },
+      { type: 'put', position: -1, strike: -10, expiry: 30 },
+    ],
+  },
+
+  // === Jade Lizards ===
+  {
+    name: 'Jade Lizard',
+    legs: [
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+      { type: 'call', position: -1, strike: 5, expiry: 30 },
+      { type: 'call', position: 1, strike: 10, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Reverse Jade Lizard',
+    legs: [
+      { type: 'call', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: 1, strike: -5, expiry: 30 },
+      { type: 'put', position: -1, strike: -10, expiry: 30 },
+    ],
+  },
+
+  // === Diagonal Spreads ===
+  {
+    name: 'Diagonal Call',
+    legs: [
+      { type: 'call', position: -1, strike: 5, expiry: 30 },
+      { type: 'call', position: 1, strike: -5, expiry: 60 },
+    ],
+  },
+  {
+    name: 'Diagonal Put',
+    legs: [
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+      { type: 'put', position: 1, strike: 5, expiry: 60 },
+    ],
+  },
+
+  // === Short Condors ===
+  {
+    name: 'Short Call Condor',
+    legs: [
+      { type: 'call', position: -1, strike: -5, expiry: 30 },
+      { type: 'call', position: 1, strike: 0, expiry: 30 },
+      { type: 'call', position: 1, strike: 5, expiry: 30 },
+      { type: 'call', position: -1, strike: 10, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Short Put Condor',
+    legs: [
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+      { type: 'put', position: 1, strike: 0, expiry: 30 },
+      { type: 'put', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: -1, strike: 10, expiry: 30 },
+    ],
+  },
+
+  // === Volatility Strategies ===
+  {
+    name: 'Strip',
+    legs: [
+      { type: 'call', position: 1, strike: 0, expiry: 30 },
+      { type: 'put', position: 2, strike: 0, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Strap',
+    legs: [
+      { type: 'call', position: 2, strike: 0, expiry: 30 },
+      { type: 'put', position: 1, strike: 0, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Guts',
+    legs: [
+      { type: 'call', position: 1, strike: -5, expiry: 30 },
+      { type: 'put', position: 1, strike: 5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Short Guts',
+    legs: [
+      { type: 'call', position: -1, strike: -5, expiry: 30 },
+      { type: 'put', position: -1, strike: 5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Double Diagonal',
+    legs: [
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+      { type: 'put', position: 1, strike: -10, expiry: 60 },
+      { type: 'call', position: -1, strike: 5, expiry: 30 },
+      { type: 'call', position: 1, strike: 10, expiry: 60 },
+    ],
+  },
+
+  // === Combos ===
+  {
+    name: 'Long Combo',
+    legs: [
+      { type: 'call', position: 1, strike: 5, expiry: 30 },
+      { type: 'put', position: -1, strike: -5, expiry: 30 },
+    ],
+  },
+  {
+    name: 'Short Combo',
+    legs: [
+      { type: 'call', position: -1, strike: 5, expiry: 30 },
+      { type: 'put', position: 1, strike: -5, expiry: 30 },
+    ],
+  },
+
   // === Synthetics ===
   {
     name: 'Synthetic Long Stock',
