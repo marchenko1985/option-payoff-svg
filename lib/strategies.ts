@@ -7,10 +7,22 @@ export interface Strategy {
 
 export const strategies: Strategy[] = [
   // === Basic ===
-  { name: 'Long Call', legs: [{ type: 'call', position: 1, strike: 0, expiry: 30 }] },
-  { name: 'Long Put', legs: [{ type: 'put', position: 1, strike: 0, expiry: 30 }] },
-  { name: 'Short Call', legs: [{ type: 'call', position: -1, strike: 0, expiry: 30 }] },
-  { name: 'Short Put', legs: [{ type: 'put', position: -1, strike: 0, expiry: 30 }] },
+  {
+    name: 'Long Call',
+    legs: [{ type: 'call', position: 1, strike: 0, expiry: 30 }],
+  },
+  {
+    name: 'Long Put',
+    legs: [{ type: 'put', position: 1, strike: 0, expiry: 30 }],
+  },
+  {
+    name: 'Short Call',
+    legs: [{ type: 'call', position: -1, strike: 0, expiry: 30 }],
+  },
+  {
+    name: 'Short Put',
+    legs: [{ type: 'put', position: -1, strike: 0, expiry: 30 }],
+  },
 
   // === Vertical Spreads ===
   {
