@@ -176,28 +176,28 @@ export const strategies: Strategy[] = [
 
   // === Calendar Spreads ===
   {
-    name: 'Long Call Calendar',
+    name: 'Long Call Calendar Spread',
     legs: [
       { type: 'call', position: -1, strike: 0, expiry: 30 },
       { type: 'call', position: 1, strike: 0, expiry: 60 },
     ],
   },
   {
-    name: 'Long Put Calendar',
+    name: 'Long Put Calendar Spread',
     legs: [
       { type: 'put', position: -1, strike: 0, expiry: 30 },
       { type: 'put', position: 1, strike: 0, expiry: 60 },
     ],
   },
   {
-    name: 'Short Call Calendar',
+    name: 'Short Call Calendar Spread',
     legs: [
       { type: 'call', position: 1, strike: 0, expiry: 30 },
       { type: 'call', position: -1, strike: 0, expiry: 60 },
     ],
   },
   {
-    name: 'Short Put Calendar',
+    name: 'Short Put Calendar Spread',
     legs: [
       { type: 'put', position: 1, strike: 0, expiry: 30 },
       { type: 'put', position: -1, strike: 0, expiry: 60 },
@@ -206,28 +206,28 @@ export const strategies: Strategy[] = [
 
   // === Ratio Spreads ===
   {
-    name: 'Long Ratio Call Spread',
+    name: 'Long Call Ratio Spread',
     legs: [
       { type: 'call', position: 1, strike: 0, expiry: 30 },
       { type: 'call', position: -2, strike: 5, expiry: 30 },
     ],
   },
   {
-    name: 'Long Ratio Put Spread',
+    name: 'Long Put Ratio Spread',
     legs: [
       { type: 'put', position: 1, strike: 0, expiry: 30 },
       { type: 'put', position: -2, strike: -5, expiry: 30 },
     ],
   },
   {
-    name: 'Short Ratio Call Spread',
+    name: 'Short Call Ratio Spread',
     legs: [
       { type: 'call', position: -1, strike: 0, expiry: 30 },
       { type: 'call', position: 2, strike: 5, expiry: 30 },
     ],
   },
   {
-    name: 'Short Ratio Put Spread',
+    name: 'Short Put Ratio Spread',
     legs: [
       { type: 'put', position: -1, strike: 0, expiry: 30 },
       { type: 'put', position: 2, strike: -5, expiry: 30 },
@@ -286,7 +286,7 @@ export const strategies: Strategy[] = [
     ],
   },
   {
-    name: 'Inverse Call Broken Wing',
+    name: 'Reverse Call Broken Wing',
     legs: [
       { type: 'call', position: -1, strike: -10, expiry: 30 },
       { type: 'call', position: 2, strike: -5, expiry: 30 },
@@ -294,7 +294,7 @@ export const strategies: Strategy[] = [
     ],
   },
   {
-    name: 'Inverse Put Broken Wing',
+    name: 'Reverse Put Broken Wing',
     legs: [
       { type: 'put', position: -1, strike: 10, expiry: 30 },
       { type: 'put', position: 2, strike: 5, expiry: 30 },
@@ -322,14 +322,14 @@ export const strategies: Strategy[] = [
 
   // === Diagonal Spreads ===
   {
-    name: 'Diagonal Call',
+    name: 'Diagonal Call Spread',
     legs: [
       { type: 'call', position: 1, strike: -5, expiry: 60 },
       { type: 'call', position: -1, strike: 5, expiry: 30 },
     ],
   },
   {
-    name: 'Diagonal Put',
+    name: 'Diagonal Put Spread',
     legs: [
       { type: 'put', position: -1, strike: -5, expiry: 30 },
       { type: 'put', position: 1, strike: 5, expiry: 60 },
@@ -372,7 +372,7 @@ export const strategies: Strategy[] = [
     ],
   },
   {
-    name: 'Guts',
+    name: 'Long Guts',
     legs: [
       { type: 'call', position: 1, strike: -5, expiry: 30 },
       { type: 'put', position: 1, strike: 5, expiry: 30 },
@@ -386,7 +386,7 @@ export const strategies: Strategy[] = [
     ],
   },
   {
-    name: 'Double Diagonal',
+    name: 'Double Calendar Diagonal',
     legs: [
       { type: 'put', position: -1, strike: -5, expiry: 30 },
       { type: 'put', position: 1, strike: -10, expiry: 60 },
@@ -395,16 +395,16 @@ export const strategies: Strategy[] = [
     ],
   },
 
-  // === Combos ===
+  // === Risk Reversals ===
   {
-    name: 'Long Combo',
+    name: 'Long Risk Reversal',
     legs: [
       { type: 'call', position: 1, strike: 5, expiry: 30 },
       { type: 'put', position: -1, strike: -5, expiry: 30 },
     ],
   },
   {
-    name: 'Short Combo',
+    name: 'Short Risk Reversal',
     legs: [
       { type: 'call', position: -1, strike: 5, expiry: 30 },
       { type: 'put', position: 1, strike: -5, expiry: 30 },
