@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit", // or "true"
+    "source.fixAll": "explicit" // or "true"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "tailwindCSS.classFunctions": ["cn"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.wordWrap": "off",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
