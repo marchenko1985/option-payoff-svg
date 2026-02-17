@@ -1,6 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { NetBadge } from './components/net-badge'
 import { calculatePayoff } from './lib/payoff'
 import { strategies } from './lib/strategies'
 import { generateSvg } from './lib/svg-generator'
@@ -109,6 +110,7 @@ export function App() {
           >
             <CardHeader>
               <CardTitle className="text-sm">{s.name}</CardTitle>
+              <CardAction><NetBadge legs={s.legs} atmPrice={DEFAULT_CONFIG.atmPrice} /></CardAction>
             </CardHeader>
             <CardContent>
               <div
