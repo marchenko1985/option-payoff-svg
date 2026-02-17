@@ -23,7 +23,7 @@ Static single-page React app that renders option strategy payoff charts as SVGs.
 - `lib/pricing.ts` - Black-Scholes option pricing (IV=0.30, r=0.05)
 - `lib/payoff.ts` - Payoff calculation engine
 - `lib/svg-generator.ts` - SVG chart generation (gradient fills, zero crossings)
-- `lib/strategies.ts` - All strategy definitions (32 strategies with canonical names)
+- `lib/strategies.ts` - All strategy definitions (53 strategies with canonical names)
 - `components/ui/` - shadcn/ui components (Card, Textarea, etc.)
 
 ## Key Architecture Decisions
